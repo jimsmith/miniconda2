@@ -112,4 +112,9 @@ chmod 755 ec2.py
 ./ec2.py --refresh
 
 ansible -i ./ec2.py -m ping localhost
+
+
+### TODO
+Autoswitching when you enter a directory:
+https://github.com/chdoig/conda-auto-env
  ```
