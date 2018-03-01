@@ -114,7 +114,18 @@ chmod 755 ec2.py
 ansible -i ./ec2.py -m ping localhost
 ```
 
-### TODO
-Autoswitching when you enter a directory:
-https://github.com/chdoig/conda-auto-env
+### Autoswitching when you enter a directory:
  ```
+source ~/conda_auto_env.sh
+ 
+cat <<EOF >>~/.bashrc
+#
+# 01/03/2018 - added conda autoswitching
+source ~/conda_auto_env.sh
+#
+EOF
+```
+
+```
+source ~/.bashrc
+```
