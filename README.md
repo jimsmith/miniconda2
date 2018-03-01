@@ -1,5 +1,7 @@
 ## Miniconda is a platform independent python environment that is easily configured with python and pip support without the need of root user.
 
+A use case maybe you do not have root access or takes a very long time to get certain devops/cloud/automation tooling to be available for you and you need to get to work 'fast'
+
 ### Get into my home directory and create directory
 ```
 cd ~
