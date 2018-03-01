@@ -1,6 +1,8 @@
 ## Miniconda is a platform independent python environment that is easily configured with python and pip support without the need of root user.
 
-A use case maybe you do not have root access or takes a very long time to get certain devops/cloud/automation tooling to be available for you and you need to get to work 'fast'
+A use case maybe you do not have root access or takes a very long time to get certain devops/cloud/automation tooling to be available for you and you need to get to work 'fast'.
+
+I chose to use miniconda and not virtualenv (which requires to be on the server to begin with and installed with root user privileges and after using it extensively it's very clunky and very selective on environment variables/$PATH) miniconda does not require such permissions.
 
 Time to get you up and running about 7 minutes.
 
