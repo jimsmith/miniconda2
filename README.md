@@ -2,6 +2,9 @@
 
 A use case maybe you do not have root access or takes a very long time to get certain devops/cloud/automation tooling to be available for you and you need to get to work 'fast'
 
+Time to get you up and running about 7 minutes.
+
+
 ### Get into my home directory and create directory
 ```
 cd ~
