@@ -129,3 +129,7 @@ EOF
 ```
 source ~/.bashrc
 ```
+An example of environment.yml for autoswitching.
+```
+name: ansible-latest
+```
