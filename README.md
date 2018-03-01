@@ -56,7 +56,7 @@ conda update conda
 ```
 
 
-### Now create my miniconda environment with Python 2.7 for the python interpretor
+### Now create my miniconda environment with Python 2.7 for the python interpreter
 ```
 conda create --yes --quiet --name ansible-latest python=2.7 pip
 ```
