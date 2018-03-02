@@ -19,28 +19,20 @@ mkdir -p miniconda && cd miniconda
 
 ### Download and install into my directory
 ```
-wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-chmod 755 Miniconda2-latest-Linux-x86_64.sh
-./Miniconda2-latest-Linux-x86_64.sh -b -p ~/miniconda2
+MINICONDA_VERSION=latest \
+wget https://repo.continuum.io/miniconda/Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
+chmod 755 Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
+./Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh -b -p ~/miniconda2
+
 ```
 
 
-### Create default condarc
+### Download default condarc and autoswitching (when entering a directory)
 ```
-cat <<EOF >~/.condarc
-# installing a new environments add these packages by default
-create_default_packages:
-  - python
-  - pip
+wget https://raw.githubusercontent.com/jimsmith/miniconda/master/.condarc -O ~/.condarc \
+wget https://raw.githubusercontent.com/jimsmith/miniconda/master/conda_auto_env.sh -O ~/conda_auto_env.sh \
+chmod 755 ~/conda_auto_env.sh
 
-# implies always using the --yes option whenever asked to proceed
-always_yes: True
-
-channels:
-  - defaults
-
-EOF
-cat ~/.condarc
 ```
 
 ### Update my bashrc
@@ -50,6 +42,8 @@ cat <<EOF >>~/.bashrc
 # 01/03/2018 - added Minicoda2 path
 export PATH=~/miniconda2/bin:$PATH
 #
+# 01/03/2018 - added conda autoswitching
+source ~/conda_auto_env.sh
 EOF
 ```
 
@@ -64,37 +58,46 @@ which conda
 conda update conda
 ```
 
+### Setup autoswitching
+```
+mkdir -p ~/miniconda/awscli/ && cd ~/miniconda/awscli/ \
+wget https://raw.githubusercontent.com/jimsmith/miniconda/master/environment.yml
+
+```
+
+If you experience message of `-bash: PROMPT_COMMAND: readonly variable` then check that this is not been set elsewhere for example in `/etc/bashrc`
 
 ### Now create my miniconda environment with Python 2.7 for the python interpreter
 ```
-conda create --yes --quiet --name ansible-latest python=2.7 pip
+conda create --yes --quiet --name awscli python=2.7 pip
+  
 ```
 
-### Activate the environment
+Tip: to activate the environment manually:
 ```
-source activate ansible-latest
+source activate awscli
 
-(ansible-latest) [jim@centos7 miniconda]$ pwd
-/home/jim/miniconda
+(awscli) [jim@centos7 miniconda]$ pwd
+/home/jim/miniconda/awscli
 ```
 
 ### Next install the programs I need from latest-requirements.txt
 ```
-(ansible-latest) [jim@centos7 miniconda]$ pip install -r latest-requirements.txt
+(awscli) [jim@centos7 miniconda]$ pip install -r https://raw.githubusercontent.com/jimsmith/miniconda/master/latest-requirements.txt
 ```
 
 ### Bonus points confirming they are installed.
 ```
-(ansible-latest) [jim@centos7 miniconda]$ ansible --version
-(ansible-latest) [jim@centos7 miniconda]$ aws --version
+(awscli) [jim@centos7 miniconda]$ ansible --version
+(awscli) [jim@centos7 miniconda]$ aws --version
 ```
 
 ### Extra Bonus points for infrastructure sanity testing
 ```
- export AWS_ACCESS_KEY_ID=
- export AWS_SECRET_ACCESS_KEY=
- export AWS_DEFAULT_REGION=
- aws iam list-users
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_REGION=
+aws iam list-users
  
 wget --no-check-certificate https://raw.github.com/ansible/ansible/devel/contrib/inventory/ec2.py
 wget --no-check-certificate https://raw.github.com/ansible/ansible/devel/contrib/inventory/ec2.ini
@@ -109,29 +112,10 @@ sed -i 's/all_elasticache_replication_groups = False/all_elasticache_replication
 sed -i 's/all_elasticache_clusters = False/all_elasticache_clusters = True/g' ec2.ini
 sed -i 's/all_elasticache_nodes = False/all_elasticache_nodes = True/g' ec2.ini
 
-export EC2_INI_PATH=~/miniconda/ec2.ini
+export EC2_INI_PATH=~/miniconda/awscli/ec2.ini
 chmod 755 ec2.py
 ./ec2.py --refresh
 
 ansible -i ./ec2.py -m ping localhost
 ```
 
-### Autoswitching when you enter a directory:
- ```
-source ~/conda_auto_env.sh
- 
-cat <<EOF >>~/.bashrc
-#
-# 01/03/2018 - added conda autoswitching
-source ~/conda_auto_env.sh
-#
-EOF
-```
-
-```
-source ~/.bashrc
-```
-An example of environment.yml for autoswitching.
-```
-name: ansible-latest
-```
