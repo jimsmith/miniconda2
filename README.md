@@ -4,6 +4,8 @@ A use case maybe you do not have root access or takes a very long time to get ce
 
 I chose to use miniconda and not virtualenv (which requires to be on the server to begin with and installed with root user privileges and after using it extensively it's very clunky and very selective on environment variables/$PATH) miniconda does not require such permissions.
 
+For further reading check out this https://news.ycombinator.com/item?id=11374804
+
 Time to get you up and running about 7 minutes.
 
 
