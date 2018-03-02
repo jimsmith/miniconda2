@@ -92,6 +92,16 @@ source activate awscli
 (awscli) [jim@centos7 miniconda]$ aws --version
 ```
 
+### Update my bashrc
+```
+cat <<EOF >>~/.bashrc
+#
+# 01/03/2018 - added aws autocomplete
+complete -C '~/miniconda2/envs/awscli/bin/aws_completer' aws
+#
+EOF
+```
+
 ### Next go and configure Ansible's EC2 Dynamic Inventory 
 https://github.com/jimsmith/miniconda/blob/master/CONFIGURE_ANSIBLE_EC2.md
 
