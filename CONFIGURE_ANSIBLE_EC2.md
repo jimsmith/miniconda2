@@ -2,11 +2,6 @@ After you have Miniconda environment completed, now is the time to configure Ans
 
 ###  Bonus points for infrastructure sanity testing
 ```
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_DEFAULT_REGION=
-aws iam list-users
- 
 wget --no-check-certificate https://raw.github.com/ansible/ansible/devel/contrib/inventory/ec2.py
 wget --no-check-certificate https://raw.github.com/ansible/ansible/devel/contrib/inventory/ec2.ini
 
@@ -19,6 +14,11 @@ sed -i 's/include_rds_clusters = False/include_rds_clusters = True/g' ec2.ini
 sed -i 's/all_elasticache_replication_groups = False/all_elasticache_replication_groups = True/g' ec2.ini
 sed -i 's/all_elasticache_clusters = False/all_elasticache_clusters = True/g' ec2.ini
 sed -i 's/all_elasticache_nodes = False/all_elasticache_nodes = True/g' ec2.ini
+
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_REGION=
+aws iam list-users
 
 export EC2_INI_PATH=~/miniconda/awscli/ec2.ini
 chmod 755 ec2.py
