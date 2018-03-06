@@ -19,10 +19,10 @@ mkdir -p miniconda && cd miniconda
 
 ### Download and install into my directory
 ```
-MINICONDA_VERSION=latest \
+MINICONDA_VERSION=latest
 wget https://repo.continuum.io/miniconda/Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
-chmod 755 Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
-./Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh -b -p ~/miniconda2
+&& chmod 755 Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
+&& ./Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh -b -p ~/miniconda2
 
 ```
 
@@ -30,8 +30,8 @@ chmod 755 Miniconda2-${MINICONDA_VERSION}-Linux-x86_64.sh \
 ### Download default condarc and autoswitching (when entering a directory)
 ```
 wget https://raw.githubusercontent.com/jimsmith/miniconda/master/.condarc -O ~/.condarc \
-wget https://raw.githubusercontent.com/jimsmith/miniconda/master/conda_auto_env.sh -O ~/conda_auto_env.sh \
-chmod 755 ~/conda_auto_env.sh
+&& wget https://raw.githubusercontent.com/jimsmith/miniconda/master/conda_auto_env.sh -O ~/conda_auto_env.sh \
+&& chmod 755 ~/conda_auto_env.sh
 
 ```
 
@@ -60,8 +60,9 @@ conda update conda
 
 ### Setup autoswitching
 ```
-mkdir -p ~/miniconda/awscli/ && cd ~/miniconda/awscli/ \
-wget https://raw.githubusercontent.com/jimsmith/miniconda/master/environment.yml
+mkdir -p ~/miniconda/awscli/ \
+&& cd ~/miniconda/awscli/ \
+&& wget https://raw.githubusercontent.com/jimsmith/miniconda/master/environment.yml
 
 ```
 
