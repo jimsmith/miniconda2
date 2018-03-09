@@ -2,6 +2,11 @@
 
 A use case maybe you do not have root access or takes a very long time to get certain devops/cloud/automation tooling to be available for you and you need to get to work 'fast'.
 
+From miniconda website: https://conda.io/docs/user-guide/install/index.html
+
+NOTE: You do not need administrative or root permissions to install Anaconda if you select a user-writable install location.
+
+
 I chose to use miniconda and not virtualenv (which requires to be on the server to begin with and installed with root user privileges and after using it extensively it's very clunky and very selective on environment variables/$PATH) miniconda does not require such permissions.
 
 For further reading check out this https://news.ycombinator.com/item?id=11374804
