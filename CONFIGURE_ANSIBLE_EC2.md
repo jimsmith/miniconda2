@@ -28,7 +28,7 @@ ansible -i ./ec2.py -m ping localhost
 ```
 
 
-For Mac OSX users the following sed command has known to work:
+For Mac OSX (10.12.6) users the following sed command has known to work:
 ```
 sed -i=''  's/all_instances = False/all_instances = True/g' ec2.ini
 sed -i='' 's/destination_variable = public_dns_name/destination_variable = private_dns_name/g' ec2.ini
