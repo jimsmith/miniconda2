@@ -13,6 +13,7 @@ For further reading check out this https://news.ycombinator.com/item?id=11374804
 
 Time to get you up and running about 7 minutes.
 
+The following is for my needs and works on CentOS 7.4 (64bit) OS
 
 ### Get into my home directory and create directory
 ```
