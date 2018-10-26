@@ -8,3 +8,12 @@ always_yes: True
 
 channels:
   - defaults
+
+envs_dirs:
+  - ~/Workspace/.conda/envs/
+
+pkgs_dirs:
+  - ~/Workspace/.conda/pkgs/
+
+conda-build:
+    root-dir: ~/Workspace/.conda/build/
